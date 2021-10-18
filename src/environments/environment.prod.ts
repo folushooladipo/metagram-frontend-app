@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   appName: 'Metagram',
-  apiHost: 'http://a629ffb6b7c4445f7a563f3ac4fe674f-759700866.us-east-1.elb.amazonaws.com/api/v0'
+  apiHost: 'http://aed500f6dd8a4427eb1c1d701a972f4c-1073244674.us-east-1.elb.amazonaws.com/api/v0'
 };
 
 /*
