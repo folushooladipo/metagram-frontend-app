@@ -8,6 +8,7 @@
     "generate-env-files": "ts-node -P tsconfig.generate-env-files.json generate-environment-files.ts",
     "start": "npm run generate-env-files && ng serve",
     "build": "npm run generate-env-files && ng build",
+    "build:prod": "npm run generate-env-files && ng build --prod",
     "test": "npm run generate-env-files && ng test",
     "lint": "npm run generate-env-files && ng lint",
     "e2e": "npm run generate-env-files && ng e2e"

@@ -30,7 +30,6 @@ plugins/ios.json
 $RECYCLE.BIN/
 .env
 src/environments/environment.ts
-src/environments/environment.prod.ts
 
 .DS_Store
 Thumbs.db
