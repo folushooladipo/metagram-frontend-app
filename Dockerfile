@@ -11,6 +11,7 @@ RUN npm ci
 
 # Bundle app source
 COPY . .
+RUN npm run generate-env-files
 RUN ionic build
 
 ## Run 
