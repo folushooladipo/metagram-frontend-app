@@ -11,7 +11,7 @@ RUN npm ci
 
 # Bundle app source
 COPY . .
-RUN API_DOMAIN="$API_DOMAIN" npm run generate-env-files
+RUN API_DOMAIN=$API_DOMAIN npm run generate-env-files
 RUN ionic build
 
 ## Run 
