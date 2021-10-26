@@ -15,7 +15,7 @@ before_script:
 
 script:
   - docker --version
-  - docker build -t frontend-app .
+  - docker build -t frontend-app --build-arg API_DOMAIN=$API_DOMAIN .
   - docker tag frontend-app folushooladipo/metagram-frontend-app:debug
   # - docker tag frontend-app folushooladipo/metagram-frontend-app:v1.0.4
   # - docker tag frontend-app folushooladipo/metagram-frontend-app:latest
