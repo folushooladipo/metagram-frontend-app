@@ -7,6 +7,10 @@ const {
   API_DOMAIN: apiDomain,
 } = process.env
 
+console.log("*****")
+console.log("apiDomain:", apiDomain)
+console.log("*****\n")
+
 if (!apiDomain) {
   throw new Error("Error. You forgot to specify API_DOMAIN.")
 }
