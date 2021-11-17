@@ -1,7 +1,8 @@
+@import '../../../theme/dimensions';
 
-  .feed {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background: var(--ion-color-light-tint);
-  }
+.feed {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, $list-item-width);
+  gap: 2rem 1rem;
+  justify-content: space-evenly;
+}
