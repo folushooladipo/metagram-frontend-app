@@ -43,6 +43,7 @@ export class ApiService {
 
   post(endpoint, data): Promise<any> {
     const url = `${API_HOST}${endpoint}`;
+
     return this.http.post<HttpEvent<any>>(url, data, this.httpOptions)
             .toPromise()
             .catch((e) => {
@@ -55,18 +56,24 @@ export class ApiService {
     const signed_url = (await this.get(`${endpoint}/signed-url/${file.name}`)).url;
 
     const headers = new HttpHeaders({'Content-Type': file.type});
-    const req = new HttpRequest( 'PUT', signed_url, file,
-                                  {
-                                    headers: headers,
-                                    reportProgress: true, // track progress
-                                  });
+    const req = new HttpRequest(
+      'PUT',
+      signed_url,
+      file,
+      {
+        headers: headers,
+        reportProgress: true,
+      }
+    );
 
-    return new Promise ( resolve => {
-        this.http.request(req).subscribe((resp) => {
-        if (resp && (<any> resp).status && (<any> resp).status === 200) {
-          resolve(this.post(endpoint, payload));
-        }
-      });
+    return new Promise (resolve => {
+      this.http.request(req)
+        .toPromise()
+        .then(resp => {
+          if (resp && (<any> resp).status && (<any> resp).status === 200) {
+            resolve(this.post(endpoint, payload));
+          }
+        });
     });
   }
 
