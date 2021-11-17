@@ -16,11 +16,11 @@ before_script:
 script:
   - docker --version
   - docker build -t frontend-app --build-arg API_DOMAIN=$API_DOMAIN .
-  - docker tag frontend-app folushooladipo/metagram-frontend-app:v1.0.5
+  - docker tag frontend-app folushooladipo/metagram-frontend-app:v1.0.6
   - docker tag frontend-app folushooladipo/metagram-frontend-app:latest
 
 # Tasks to perform after the process is successful. Formatting the Docker username and password as below enables you to programmatically log in without having the password exposed in logs.
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push folushooladipo/metagram-frontend-app:v1.0.5
+  - docker push folushooladipo/metagram-frontend-app:v1.0.6
   - docker push folushooladipo/metagram-frontend-app:latest
