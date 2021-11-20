@@ -3,6 +3,7 @@ import { environment } from '../../../environments/environment';
 import { FeedItem } from '../models/feed-item.model';
 import { FeedProviderService } from '../services/feed.provider.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
   selector: 'app-feed-list',
@@ -13,15 +14,28 @@ import { Subscription } from 'rxjs';
 export class FeedListComponent implements OnInit, OnDestroy {
   @Input() feedItems: FeedItem[];
   subscriptions: Subscription[] = [];
-  constructor( private feed: FeedProviderService ) { }
+  isLoggedIn: boolean = false;
 
-  async ngOnInit() {
+  constructor(private feed: FeedProviderService,  private auth: AuthService) { }
+
+  ngOnInit() {
     this.subscriptions.push(
       this.feed.currentFeed$.subscribe((items) => {
       this.feedItems = items;
+      console.log("items", items)
     }));
 
-    await this.feed.getFeed();
+    this.subscriptions.push(
+      this.auth.currentUser$.subscribe((user) => {
+        const isLoggedIn = user !== null;
+        if (!this.isLoggedIn && isLoggedIn) {
+          this.feed.getFeed();
+        }
+        if (this.isLoggedIn !== isLoggedIn) {
+          this.isLoggedIn = isLoggedIn;
+        }
+      })
+    );
   }
 
   ngOnDestroy(): void {

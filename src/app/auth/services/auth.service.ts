@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../models/user.model';
 import { ApiService } from 'src/app/api/api.service';
-import { catchError, tap } from 'rxjs/operators';
+import { FeedProviderService } from 'src/app/feed/services/feed.provider.service';
+
 
 const JWT_LOCALSTORE_KEY = 'jwt';
 const USER_LOCALSTORE_KEY = 'user';
@@ -12,7 +13,7 @@ const USER_LOCALSTORE_KEY = 'user';
 })
 export class AuthService {
   currentUser$: BehaviorSubject<User> = new BehaviorSubject<User>(null);
-  constructor( private api: ApiService ) {
+  constructor(private api: ApiService, private feedService: FeedProviderService) {
     this.initToken();
   }
 
@@ -39,11 +40,11 @@ export class AuthService {
                 return res;
               })
               .catch((e) => { throw e; });
-      // return user !== undefined;
   }
 
   logout(): boolean {
     this.setTokenAndUser(null, null);
+    this.feedService.clearFeed();
     return true;
   }
 

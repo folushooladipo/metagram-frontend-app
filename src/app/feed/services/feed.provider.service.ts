@@ -8,7 +8,7 @@ import { ApiService } from '../../api/api.service';
   providedIn: 'root'
 })
 export class FeedProviderService {
-  currentFeed$: BehaviorSubject<FeedItem[]> = new BehaviorSubject<FeedItem[]>([]);
+  currentFeed$: BehaviorSubject<FeedItem[]> = new BehaviorSubject<FeedItem[] | null>(null);
 
   constructor(private api: ApiService) { }
 
@@ -24,5 +24,10 @@ export class FeedProviderService {
     const feed = [res, ...this.currentFeed$.value];
     this.currentFeed$.next(feed);
     return res;
+  }
+
+  clearFeed(): void {
+    // TODO: why is this not working????
+    this.currentFeed$.next(null);
   }
 }
