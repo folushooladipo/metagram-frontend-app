@@ -26,9 +26,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Lint app
-        run: npm run lint
+        run: API_DOMAIN=${{ secrets.API_DOMAIN }} npm run lint
       - name: Build app
-        run: npm run build
+        run: API_DOMAIN=${{ secrets.API_DOMAIN }} npm run build
       # TODO: fix failing tests and re-enable this.
       # - name: Run tests
       #   run: npm run test
