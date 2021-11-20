@@ -14,7 +14,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
 export class FeedListComponent implements OnInit, OnDestroy {
   @Input() feedItems: FeedItem[];
   subscriptions: Subscription[] = [];
-  isLoggedIn: boolean = false;
+  isLoggedIn = false;
 
   constructor(private feed: FeedProviderService,  private auth: AuthService) { }
 
@@ -22,7 +22,6 @@ export class FeedListComponent implements OnInit, OnDestroy {
     this.subscriptions.push(
       this.feed.currentFeed$.subscribe((items) => {
       this.feedItems = items;
-      console.log("items", items)
     }));
 
     this.subscriptions.push(

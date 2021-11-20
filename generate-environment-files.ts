@@ -1,28 +1,25 @@
-import {config as loadEnv} from "dotenv"
-import {writeFileSync} from "fs"
+import {config as loadEnv} from 'dotenv'
+import {writeFileSync} from 'fs'
 
 loadEnv()
 
 const {
   API_DOMAIN: apiDomain,
-} = process.env
+} = process.env;
 
-console.log("*****")
-console.log("apiDomain:", apiDomain)
-console.log("*****\n")
 
 if (!apiDomain) {
-  throw new Error("Error. You forgot to specify API_DOMAIN.")
+  throw new Error('Error. You forgot to specify API_DOMAIN.');
 }
 
-const targetPath = "./src/environments/environment.ts"
+const targetPath = './src/environments/environment.ts';
 const envContent = `export const environment = {
   production: false,
-  appName: "Metagram",
-  apiHost: "${apiDomain}/api/v0"
-}
-`
+  appName: 'Metagram',
+  apiHost: '${apiDomain}/api/v0'
+};
+`;
 
-writeFileSync(targetPath, envContent)
+writeFileSync(targetPath, envContent);
 
-console.log(`Finished generating ${targetPath}\n\n`)
+console.log(`Finished generating ${targetPath}\n\n`);
