@@ -26,9 +26,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Lint app
-        run: npm lint
+        run: npm run lint
       - name: Build app
-        run: npm build
+        run: npm run build
       # TODO: fix failing tests and re-enable this.
       # - name: Run tests
-      #   run: npm test
+      #   run: npm run test
