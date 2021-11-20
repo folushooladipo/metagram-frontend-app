@@ -1,4 +1,4 @@
-<h3 *ngIf="!isLoggedIn">Please log in to see your feed.</h3>
+<h3 *ngIf="!isLoggedIn" class="login-msg">Please log in to see your feed.</h3>
 <!-- <h3 *ngIf="isLoggedIn && feedItems && feedItems.length === 0">Your feed is empty. Why not add something ASAP?</h3> -->
 
 <!-- TODO: this is a workaround as I can't seem to clear feedService.currentFeed$ whenever the user logs out. -->

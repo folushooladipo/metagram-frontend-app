@@ -1,5 +1,9 @@
 @import '../../../theme/dimensions';
 
+.login-msg {
+  padding: 0 16px;
+}
+
 .feed {
   display: grid;
   grid-template-columns: repeat(auto-fill, $list-item-width);
