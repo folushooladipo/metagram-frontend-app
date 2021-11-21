@@ -32,7 +32,7 @@ jobs:
           images: folushooladipo/metagram-frontend-app
           tags: |
             latest
-            v1.0.7
+            v1.0.8
       
       - name: Build and push Docker image
         uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
